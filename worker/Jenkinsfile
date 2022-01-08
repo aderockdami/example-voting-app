@@ -26,11 +26,4 @@ pipeline {
         }
     }
 }
-     post { 
-        always { 
-            echo 'completed'
-        }
-    }
-
-
     
