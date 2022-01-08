@@ -13,13 +13,13 @@ pipeline {
                 
         }
         
-            stage ('test') {
+        stage ('test') {
             steps{
                 echo 'Running unit test on worker App'
                 
             }
         }
-            stage ('package') {
+        stage ('package') {
             steps{
                 echo 'Packaging worker App'
             }
