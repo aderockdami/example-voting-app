@@ -24,11 +24,10 @@ pipeline {
                 echo 'Packaging worker App'
             }
         }
-    }
+    
      post { 
         always { 
             echo 'completed'
         }
     }
-    
 }
