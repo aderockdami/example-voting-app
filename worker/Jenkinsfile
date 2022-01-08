@@ -3,7 +3,7 @@ pipeline {
      tools {
         maven 'Maven 3.6.1' 
     }
-    stages {
+    stages{
         stage ('build') {
             steps{
               echo 'Compliling worker app'
@@ -11,8 +11,8 @@ pipeline {
                sh 'mvn compile'
             }
                 
-            }
         }
+        
             stage ('test') {
             steps{
                 echo 'Running unit test on worker App'
@@ -25,10 +25,12 @@ pipeline {
             }
         }
     }
+}
      post { 
         always { 
             echo 'completed'
         }
     }
+
+
     
-}
