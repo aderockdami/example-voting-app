@@ -11,7 +11,7 @@ stages{
     steps{
 
       echo 'Compiling result app'
-      dir ('result'){
+      dir ('worker'){
            sh 'npm install'
                 }
         
