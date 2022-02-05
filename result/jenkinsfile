@@ -13,11 +13,11 @@ stages{
       echo 'Compiling result app'
       dir ('result'){
            sh 'npm install'
-                }
+        }
         
     }
  }
-}
+
 
     stage (Test){
       when{
@@ -32,5 +32,6 @@ stages{
                 }
         
     }
+}
 }
 }
