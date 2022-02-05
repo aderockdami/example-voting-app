@@ -6,11 +6,11 @@ pipeline {
 stages{
     stage ('build'){
              when{
-                changeset "**/worker/**"
+                changeset "**/result/**"
             }
     steps{
 
-      echo 'Compiling worker app'
+      echo 'Compiling result app'
       dir('result'){
                   sh 'npm install'
                 }
@@ -21,11 +21,11 @@ stages{
 stages{
     stage ('Test'){
       when{
-                changeset "**/worker/**"
+                changeset "**/result/**"
             }
     steps{
 
-      echo 'Compiling worker app'
+      echo 'Compiling result app'
       dir('result'){
                   sh 'npm install'
                   sh 'npm test'
