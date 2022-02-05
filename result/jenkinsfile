@@ -4,22 +4,22 @@ pipeline {
       nodejs 'Nodejs 8.9.0'
 }
 stages{
-    stage ('build'){
+    stage (build){
              when{
                 changeset "**/result/**"
             }
     steps{
 
       echo 'Compiling result app'
-      dir('result'){
-                  sh 'npm install'
+      dir ('result'){
+           sh 'npm install'
                 }
         
     }
  }
 }
 stages{
-    stage ('Test'){
+    stage (Test){
       when{
                 changeset "**/result/**"
             }
