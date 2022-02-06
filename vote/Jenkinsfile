@@ -1,7 +1,7 @@
 pipeline {
     agent {
      docker {
-        image 'python:slim-buster' 
+        image 'python:latest' 
         args '-v $HOME/.m2:/root/.m2'
     }
     }
@@ -25,7 +25,7 @@ stages{
 
       echo 'Test Vote app'
       dir('vote'){
-                  sh 'nosetests -v '
+       sh 'nosetests -v'
                 
                 }
         
