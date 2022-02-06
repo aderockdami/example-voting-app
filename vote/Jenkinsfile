@@ -3,6 +3,7 @@ pipeline {
      docker {
         image 'python:latest' 
         args '-v $HOME/.m2:/root/.m2'
+        args '--user root'
     }
     }
 stages{
