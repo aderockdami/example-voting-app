@@ -11,7 +11,7 @@ stages{
     steps{
 
       echo 'Compiling Vote app'
-      dir ('result'){
+      dir ('vote'){
            sh 'pip install -i requirements.txt'
         }
         
@@ -24,7 +24,7 @@ stages{
     steps{
 
       echo 'Test Vote app'
-      dir('result'){
+      dir('vote'){
                   sh 'nosetests -v '
                 
                 }
