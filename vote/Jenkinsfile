@@ -1,7 +1,7 @@
 pipeline {
     agent {
      docker {
-        image 'puthon:slim-buster' 
+        image 'python:slim-buster' 
         args '-v $HOME/.m2:/root/.m2'
     }
     }
