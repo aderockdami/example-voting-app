@@ -1,0 +1,35 @@
+pipeline {
+    agent {
+     docker {
+        image 'puthon:slim-buster' 
+        args '-v $HOME/.m2:/root/.m2'
+    }
+    }
+stages{
+    stage (build){
+    
+    steps{
+
+      echo 'Compiling Vote app'
+      dir ('result'){
+           sh 'pip install -i requirements.txt'
+        }
+        
+    }
+ }
+
+
+    stage (Test){
+  
+    steps{
+
+      echo 'Test Vote app'
+      dir('result'){
+                  sh 'nosetests -v '
+                
+                }
+        
+    }
+}
+}
+}
