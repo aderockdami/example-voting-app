@@ -1,7 +1,7 @@
 pipeline {
     agent {
      docker {
-        image 'nodejs:erbium-stretch' 
+        image 'node:erbium-stretch' 
         args '-v $HOME/.m2:/root/.m2'
     }
     }
