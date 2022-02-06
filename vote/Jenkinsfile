@@ -26,7 +26,7 @@ stages{
 
       echo 'Test Vote app'
       dir('vote'){
-       sh 'nosetests -v'
+          sh 'nosetests -v'
                 
                 }
         
