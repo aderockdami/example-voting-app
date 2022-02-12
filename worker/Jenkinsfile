@@ -24,8 +24,9 @@ pipeline {
                 
             }
         }
+
         stage ('package') {
-            
+
             steps{
                 echo 'Packaging worker App'
                 dir('worker'){
@@ -33,6 +34,7 @@ pipeline {
             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
              }
             }
+        }
 
           stage ('docker-Package') {
            
