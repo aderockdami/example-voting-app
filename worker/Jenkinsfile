@@ -62,7 +62,7 @@ pipeline {
                    def workerImaage = docker.build("aderock/worker:${env.BUILD_ID}", "./worker")
 
                     workerImage.push()
-                    workerImage.push("${env.BRANCH_NAME}")
+                    
                 
 
                 }
