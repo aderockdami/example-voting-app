@@ -7,9 +7,7 @@ pipeline {
     }
     stages{
         stage ('build') {
-             when{
-                changeset "**/worker/**"
-            }
+         
             steps{
               echo 'Compliling worker app'
               dir ('worker'){
@@ -20,25 +18,37 @@ pipeline {
         }
         
         stage ('test') {
-             when{
-                changeset "**/worker/**"
-            }
+           
             steps{
                 echo 'Running unit test on worker App'
                 
             }
         }
         stage ('package') {
-            when{
-                branch 'master'
-                changeset "**/worker/**"
-            }
+            
             steps{
                 echo 'Packaging worker App'
                 dir('worker'){
             sh 'mvn package -Dskiptest'
             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
              }
+            }
+
+          stage ('docker-Package') {
+           
+            steps{
+                echo 'Running unit test on worker App'
+                script{
+                  docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
+
+                def workerImaage = docker.build("aderock/worker:${env.BUILD_ID}", "./worker")
+
+                workerImage.push()
+                workerImage.push("${env.BRANCH_NAME}")
+                
+
+                }
+                
             }
         }
     }
@@ -48,4 +58,6 @@ pipeline {
      }
    }
 
+
+}
 }
