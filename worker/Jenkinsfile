@@ -57,7 +57,7 @@ pipeline {
                 script{
                   docker.withRegistry('https://index.docker.io/v1', 'test') {
 
-                   def workerImaage = docker.build("aderock/worker:vtest}", "./worker")
+                   def workerImaage = docker.build("aderock/worker:v1", "./worker")
                     workerImage.push()
                     workerImage.push("${env.BRANCH_NAME}")
                     
