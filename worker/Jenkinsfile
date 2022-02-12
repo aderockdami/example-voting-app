@@ -21,8 +21,7 @@ pipeline {
            
             steps{
                 echo 'Running unit test on worker App'
-                 dir ('worker'){
-               sh 'mvn compile'
+            
             }
         }
 
@@ -58,6 +57,5 @@ pipeline {
     
 
 
-}
 }
 }
