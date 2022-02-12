@@ -52,7 +52,7 @@ pipeline {
 
           stage ('docker-Package') {
               agent any
-    }
+        
            
             steps{
                 echo 'Running unit test on worker App'
@@ -71,7 +71,6 @@ pipeline {
         }
     }
     
-
-
+}
 }
 
