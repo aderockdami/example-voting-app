@@ -21,7 +21,8 @@ pipeline {
            
             steps{
                 echo 'Running unit test on worker App'
-                
+                 dir ('worker'){
+               sh 'mvn compile'
             }
         }
 
@@ -56,13 +57,7 @@ pipeline {
     }
     
 
-    post{
-     always{
-     echo 'Build pipeline for workers is complete..'
-      }
-   }
-
 
 }
 }
-
+}
