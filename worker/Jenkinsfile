@@ -1,13 +1,13 @@
 pipeline {
-    agent {
-     docker {
-        image 'maven:amazoncorretto' 
-        args '-v $HOME/.m2:/root/.m2'
-    }
-    }
+    agent none 
     stages{
         stage ('build') {
-         
+        agent {
+          docker {
+        image 'maven:amazoncorretto' 
+        args '-v $HOME/.m2:/root/.m2'
+       }
+        }
             steps{
               echo 'Compliling worker app'
               dir ('worker'){
@@ -18,6 +18,14 @@ pipeline {
         }
         
         stage ('test') {
+            agent {
+     
+          docker {
+        image 'maven:amazoncorretto' 
+        args '-v $HOME/.m2:/root/.m2'
+
+        }
+            }
            
             steps{
                 echo 'Running unit test on worker App'
@@ -26,6 +34,12 @@ pipeline {
         }
 
         stage ('package') {
+            agent {
+     docker {
+        image 'maven:amazoncorretto' 
+        args '-v $HOME/.m2:/root/.m2'
+    }
+            }
 
             steps{
                 echo 'Packaging worker App'
@@ -37,6 +51,8 @@ pipeline {
         }
 
           stage ('docker-Package') {
+              agent any
+    }
            
             steps{
                 echo 'Running unit test on worker App'
@@ -58,4 +74,4 @@ pipeline {
 
 
 }
-}
+
