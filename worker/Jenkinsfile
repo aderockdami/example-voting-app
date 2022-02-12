@@ -52,12 +52,10 @@ pipeline {
 
           stage ('docker-Package') {
               agent any
-        
-           
             steps{
                 echo 'Running unit test on worker App'
                 script{
-                  docker.withRegistry('https://index.docker.io/v1/','dockerlogin') {
+                  docker.withRegistry('https://index.docker.io/v1', 'test') {
 
                    def workerImaage = docker.build("aderock/worker:v${env.BUILD_ID}", "./worker")
 
