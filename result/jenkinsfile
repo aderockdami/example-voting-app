@@ -5,7 +5,7 @@ stages{
       agent {
      docker {
         image 'node:erbium-stretch' 
-        args '-v $HOME/.m2:/root/.m2'
+      
       }
     }
     
@@ -24,7 +24,7 @@ stages{
       agent {
      docker {
         image 'node:erbium-stretch' 
-        args '-v $HOME/.m2:/root/.m2'
+      
     }
     }
   
@@ -39,7 +39,9 @@ stages{
     }
 }
     stage ('docker-Package') {
-        agent { dockerfile true }
+        agent {
+                docker { image 'docker:latest' }
+            }
     steps{
         echo 'Running unit test on worker App'
         script{
