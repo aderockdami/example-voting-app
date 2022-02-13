@@ -20,7 +20,7 @@ stages{
     }
  }
 
-stage ('docker-Package') {
+stage ('docker-Package-vote') {
         agent any
     steps{
         echo 'Running unit test on vote App'
@@ -87,7 +87,7 @@ stage ('build') {
             }
         }
 
-          stage ('docker-Package') {
+          stage ('docker-Package-Worker') {
               agent any
             steps{
                 echo 'Running unit test on worker App'
@@ -142,10 +142,10 @@ stage ('build') {
         
     }
 }
-    stage ('docker-Package') {
+    stage ('docker-Package-Result') {
         agent any
     steps{
-        echo 'Running unit test on worker App'
+        echo 'Running unit test on result App'
         script{
             docker.withRegistry('https://index.docker.io/v1/', 'test') {
 
