@@ -40,7 +40,7 @@ stages{
 }
     stage ('docker-Package') {
         agent {
-                docker { image 'docker:latest' }
+                docker { image 'docker:20.10.12-alpine3.15' }
             }
     steps{
         echo 'Running unit test on worker App'
