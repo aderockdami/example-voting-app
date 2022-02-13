@@ -1,7 +1,7 @@
 pipeline {
     agent none
 stages{
-    stage (build){
+    stage (build-vote){
     agent {
      docker {
         image 'python:2.7.16-slim' 
@@ -38,7 +38,7 @@ stage ('docker-Package-vote') {
             }
         }
     }
-stage ('build') {
+stage ('build-worker') {
         agent {
           docker {
         image 'maven:amazoncorretto' 
@@ -54,7 +54,7 @@ stage ('build') {
                 
         }
         
-        stage ('test') {
+        stage ('test-Worker-App') {
             agent {
      
           docker {
@@ -70,7 +70,7 @@ stage ('build') {
             }
         }
 
-        stage ('package') {
+        stage ('package-worker-app') {
             agent {
      docker {
         image 'maven:amazoncorretto' 
@@ -105,7 +105,7 @@ stage ('build') {
             }
         }
     }
-    stage (build){
+    stage (build-result-app){
       agent {
      docker {
         image 'node:erbium-stretch' 
@@ -124,7 +124,7 @@ stage ('build') {
  }
 
 
-    stage (Test){
+    stage (Test-result){
       agent {
      docker {
         image 'node:erbium-stretch' 
