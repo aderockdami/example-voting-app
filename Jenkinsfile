@@ -1,7 +1,7 @@
 pipeline {
     agent none
 stages{
-    stage (build-vote){
+    stage ('build-Vote'){
     agent {
      docker {
         image 'python:2.7.16-slim' 
@@ -105,7 +105,7 @@ stage ('build-worker') {
             }
         }
     }
-    stage (build-result-app){
+    stage ('build-result-app'){
       agent {
      docker {
         image 'node:erbium-stretch' 
@@ -124,7 +124,7 @@ stage ('build-worker') {
  }
 
 
-    stage (Test-result){
+    stage ('Test-result'){
       agent {
      docker {
         image 'node:erbium-stretch' 
