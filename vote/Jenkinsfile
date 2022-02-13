@@ -1,4 +1,7 @@
 pipeline {
+    agent none
+stages{
+    stage (build){
     agent {
      docker {
         image 'python:2.7.16-slim' 
@@ -6,8 +9,6 @@ pipeline {
         args '--user root'
     }
     }
-stages{
-    stage (build){
     
     steps{
 
@@ -21,6 +22,13 @@ stages{
 
 
     stage (Test){
+    agent {
+     docker {
+        image 'python:2.7.16-slim' 
+        args '-v $HOME/.m2:/root/.m2'
+        args '--user root'
+    }
+    }
   
     steps{
 
@@ -32,5 +40,23 @@ stages{
         
     }
 }
+stage ('docker-Package') {
+        agent any
+    steps{
+        echo 'Running unit test on vote App'
+        script{
+            docker.withRegistry('https://index.docker.io/v1/', 'test') {
+
+            def voteImage = docker.build("aderock/vote:v1", "./vote")
+            voteImage.push()
+            voteImage.push("${env.BRANCH_NAME}")
+                    
+                
+
+                }
+                
+            }
+        }
+    }
 }
 }
