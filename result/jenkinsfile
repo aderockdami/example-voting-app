@@ -39,9 +39,7 @@ stages{
     }
 }
     stage ('docker-Package') {
-        agent {
-                docker any
-            }
+        agent any
     steps{
         echo 'Running unit test on worker App'
         script{
