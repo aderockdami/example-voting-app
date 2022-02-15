@@ -25,7 +25,7 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'test') {
 
-            def voteImage = docker.build("aderock/vote:v1", "./vote")
+            def voteImage = docker.build("aderock/vote:v${env.BUILD_ID}", "./vote")
             voteImage.push()
             voteImage.push("${env.BRANCH_NAME}")
 
@@ -92,7 +92,7 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'test') {
 
-            def workerImage = docker.build("aderock/worker:v1", "./worker")
+            def workerImage = docker.build("aderock/worker:v${env.BUILD_ID}", "./worker")
             workerImage.push()
             workerImage.push("${env.BRANCH_NAME}")
 
@@ -144,7 +144,7 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'test') {
 
-            def resultImage = docker.build("aderock/result:v1", "./result")
+            def resultImage = docker.build("aderock/result:v${env.BUILD_ID}", "./result")
             resultImage.push()
             resultImage.push("${env.BRANCH_NAME}")
 
