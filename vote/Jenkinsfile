@@ -29,7 +29,7 @@ stages{
       }
 
       environment{
-        sonarpath = tool 'SonarScanner'
+        sonarpath = tool 'SONAQUBE'
       }
 
       steps {
